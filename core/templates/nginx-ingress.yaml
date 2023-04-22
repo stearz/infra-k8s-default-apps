@@ -15,9 +15,9 @@ spec:
         - name: "controller.type"
           value: DaemonSet
         - name: "controller.watchIngressWithoutClass"
-          value: true
+          value: "true"
         - name: "controller.ingressClassResource.default"
-          value: true
+          value: "true"
         - name: "controller.service.externalTrafficPolicy"
           value: Local
   destination:
