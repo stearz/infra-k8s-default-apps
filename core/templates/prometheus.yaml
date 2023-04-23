@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: reloader
+  name: monitoring
   namespace: argocd
 spec:
   project: default
   source:
-    chart: reloader
-    repoURL: https://stakater.github.io/stakater-charts
-    targetRevision: v1.0.22
+    chart: kube-prometheus-stack
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 45.19.0
     helm:
-      releaseName: reloader
+      releaseName: kube-prometheus-stack
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: reloader
+    namespace: monitoring
   syncPolicy:
     automated:
       prune: true
