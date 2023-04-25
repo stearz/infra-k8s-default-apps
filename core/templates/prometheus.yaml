@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: monitoring
+  name: kube-prometheus-stack
   namespace: argocd
 spec:
   project: default
@@ -11,6 +11,11 @@ spec:
     targetRevision: 45.19.0
     helm:
       releaseName: kube-prometheus-stack
+      parameters:
+        - name: "grafana.enabled"
+          value: "true"
+        - name: "grafana.ingress.enabled"
+          value: "true"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: monitoring

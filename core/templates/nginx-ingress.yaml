@@ -12,7 +12,7 @@ spec:
     helm:
       releaseName: nginx-ingress
       parameters:
-        - name: "controller.type"
+        - name: "controller.kind"
           value: DaemonSet
         - name: "controller.watchIngressWithoutClass"
           value: "true"
@@ -20,6 +20,10 @@ spec:
           value: "true"
         - name: "controller.service.externalTrafficPolicy"
           value: Local
+        - name: "controller.opentelemetry.enabled"
+          value: "true"
+        - name: "controller.metrics.enabled"
+          value: "true"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: nginx-ingress
